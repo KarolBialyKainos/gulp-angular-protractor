@@ -30,6 +30,8 @@ var
     PLUGIN_NAME = require('./gulp-angular-protractor/constants.json').PLUGIN_NAME;
 
 module.exports = function (options) {
+    global.PROTRACTOR_OPTIONS = options;
+
     gutil.log(PLUGIN_NAME + ' - The plugin is retrieved and will start soon');
 
     var

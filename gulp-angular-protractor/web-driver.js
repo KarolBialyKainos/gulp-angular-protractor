@@ -20,15 +20,15 @@ var
     url = require('url'),
     http = require('http'),
     childProcess = require('child_process'),
-    
+
     // Constants
     PLUGIN_NAME = require('./constants.json').PLUGIN_NAME,
     IS_WINDOWS = /^win/.test(process.platform),
     WIN_COMMAND_EXTENSION = IS_WINDOWS ? '.cmd': '',
     COMMAND_RELATIVE_PATH = IS_WINDOWS ? '' : './',
 
-    PROTRACTOR_DIR = gprotractor.getProtractorDir(),
-    PROTRACTOR_COMMAND = 'protractor' + WIN_COMMAND_EXTENSION,
+    PROTRACTOR_DIR = gprotractor.getProtractorDir(global.PROTRACTOR_OPTIONS),
+    PROTRACTOR_COMMAND = global.PROTRACTOR_OPTIONS.protractorPlugin + WIN_COMMAND_EXTENSION,
 
     WEB_DRIVER_LOG_STARTED = 'Started org.openqa.jetty.jetty.Server',
     WEB_DRIVER_LOG_STARTED_NEW = 'Selenium Server is up and running',
@@ -108,7 +108,7 @@ module.exports = {
 
             } else if (dataString.indexOf(WEB_DRIVER_LOG_STOPPED) >= 0) {
                 logOutput = true;
-                
+
                 if (verbose) {
                     gutil.log(dataString);
                 }
