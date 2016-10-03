@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "event-stream": "3.1.5",
-    "gulp-protractor": "git://github.com/KarolBialyKainos/gulp-protractor.git#0e709141013486a83315177f75e06697edd51cf1",
+    "gulp-protractor": "git://github.com/KarolBialyKainos/gulp-protractor.git#0ebedf7dda2d58d11d2feeacfeb15e39fade2c05",
     "gulp-util": "3.0.1",
     "lodash": "2.4.1"
   },
