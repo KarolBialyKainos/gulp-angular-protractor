@@ -19,18 +19,16 @@ var
     // Import required API
     fs = require('fs'),
     path = require('path'),
-    _ = require('lodash'),
-
-    // Import internal API
-    webDriver = require('./gulp-angular-protractor/web-driver'),
-    gulpStream = require('./gulp-angular-protractor/gulp-stream'),
-    defaultOptions = require('./gulp-angular-protractor/default-options.json'),
-
-    // Constants
-    PLUGIN_NAME = require('./gulp-angular-protractor/constants.json').PLUGIN_NAME;
+    _ = require('lodash');
 
 module.exports = function (options) {
     global.PROTRACTOR_OPTIONS = options;
+
+    var // Import internal API
+    webDriver = require('./gulp-angular-protractor/web-driver'),
+    gulpStream = require('./gulp-angular-protractor/gulp-stream'),
+    defaultOptions = require('./gulp-angular-protractor/default-options.json'),
+    PLUGIN_NAME = require('./gulp-angular-protractor/constants.json').PLUGIN_NAME;
 
     gutil.log(PLUGIN_NAME + ' - The plugin is retrieved and will start soon');
 
