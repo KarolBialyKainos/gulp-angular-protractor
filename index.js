@@ -22,21 +22,21 @@ var
     _ = require('lodash');
 
 module.exports = function (options) {
-    global.PROTRACTOR_OPTIONS = options;
+    var defaultOptions = require('./gulp-angular-protractor/default-options.json');
+    var mergedOptions = _.extend({ }, defaultOptions, options);
+    global.PROTRACTOR_OPTIONS = mergedOptions;
 
     var // Import internal API
-    webDriver = require('./gulp-angular-protractor/web-driver'),
-    gulpStream = require('./gulp-angular-protractor/gulp-stream'),
-    defaultOptions = require('./gulp-angular-protractor/default-options.json'),
-    PLUGIN_NAME = require('./gulp-angular-protractor/constants.json').PLUGIN_NAME;
+        webDriver = require('./gulp-angular-protractor/web-driver'),
+        gulpStream = require('./gulp-angular-protractor/gulp-stream'),
+        PLUGIN_NAME = require('./gulp-angular-protractor/constants.json').PLUGIN_NAME;
 
     gutil.log(PLUGIN_NAME + ' - The plugin is retrieved and will start soon');
 
     var
         protractorConfiguration,
         webDriverShutDownUrl,
-        webDriverUrl = webDriver.DEFAULT_WEB_DRIVER_URL,
-        mergedOptions = _.extend({ }, defaultOptions, options);
+        webDriverUrl = webDriver.DEFAULT_WEB_DRIVER_URL;
 
     if (!mergedOptions.configFile) {
         throw new gutil.PluginError(PLUGIN_NAME, '`configFile` required');
